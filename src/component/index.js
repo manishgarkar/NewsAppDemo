@@ -4,7 +4,6 @@ import { colors } from '../assects/colors';
 import { width } from '../assects/strings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import fonts from '../assects/fonts';
-import LinearGradient from 'react-native-linear-gradient';
 import { showMessage } from 'react-native-flash-message';
 import { toneopimages } from '../assects/Images/Toneop';
 import { useNavigation } from '@react-navigation/native';

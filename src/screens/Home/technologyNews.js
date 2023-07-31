@@ -36,6 +36,9 @@ function TechnologyNews(){
 
 
        
+   function onRefresh() {
+    fetchTechnologyNews({setLoading,setArticles})
+    }
    
 
     function RenderNewsList({item,index}){
@@ -50,6 +53,15 @@ function TechnologyNews(){
             />
         )
     }
+    function ListEmptyComponent(){
+        return(
+            <View style={{width:width,height:width,alignItems:"center",justifyContent:"center"}} >
+                <Text style={{fontFamily:fonts?.PoppinsMedium,color:colors?.white}} >No data found</Text>
+                <Text style={{fontFamily:fonts?.PoppinsMedium,color:colors?.white}}  >Pull to refresh and reload</Text>
+            </View>
+        )
+    }
+    
 
     return(
         <View style={{flex:1,backgroundColor:colors?.secondryColor}} >
@@ -58,6 +70,9 @@ function TechnologyNews(){
                 data={articles} 
                 renderItem={RenderNewsList} 
                 ItemSeparatorComponent={ItemSeparatorComponent}
+                ListEmptyComponent={ListEmptyComponent}
+                onRefresh={() => onRefresh()}
+                refreshing={loading}
             />
             <LoaderComponet visible={loading} />
         </View>

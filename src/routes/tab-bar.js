@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, View, Vibration ,Alert,Text, TouchableHighlight, Pressable} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../assects/colors';
 import { iosOpacity, routesToExcluedNavBar, width } from '../assects/strings';

@@ -12,7 +12,7 @@ import NewsListCardComponent from "../../component/NewsListCardComponent";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
 import routes from "../../routes/routes";
 import { getTopHeadlines } from "../../api";
-import { ItemSeparatorComponent } from "../../component";
+import { ItemSeparatorComponent, LoaderComponet } from "../../component";
 import { fetchSportsNews } from "../../api/apiCalls";
 
 const Tab = createMaterialTopTabNavigator();
@@ -26,15 +26,17 @@ function SportsNews(){
 
     useEffect(()=>{
       //  need to implement due to api failed with too many request
-        setTimeout(()=>{
-            fetchSportsNews({setLoading,setArticles})
-        },1000)
+        // setTimeout(()=>{
+        //     fetchSportsNews({setLoading,setArticles})
+        // },1000)
    },[])
 
 
 
 
-       
+   function onRefresh() {
+    fetchSportsNews({setLoading,setArticles})
+    }
    
 
     function RenderNewsList({item,index}){
@@ -50,14 +52,29 @@ function SportsNews(){
         )
     }
 
+    function ListEmptyComponent(){
+        return(
+            <View style={{width:width,height:width,alignItems:"center",justifyContent:"center"}} >
+                <Text style={{fontFamily:fonts?.PoppinsMedium,color:colors?.white}} >No data found</Text>
+                <Text style={{fontFamily:fonts?.PoppinsMedium,color:colors?.white}}  >Pull to refresh and reload</Text>
+            </View>
+        )
+    }
+  
+
     return(
         <View style={{flex:1,backgroundColor:colors?.secondryColor}} >
             <FlatList 
                 style={{paddingTop:10}}
                 data={articles} 
+                ListEmptyComponent={ListEmptyComponent}
                 renderItem={RenderNewsList} 
                 ItemSeparatorComponent={ItemSeparatorComponent}
+                onRefresh={() => onRefresh()}
+                 refreshing={loading}
+
             />
+            <LoaderComponet visible={loading} />
         </View>
     )
 }
