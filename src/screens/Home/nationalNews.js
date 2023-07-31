@@ -9,7 +9,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import  Icon  from "react-native-vector-icons/MaterialCommunityIcons";
 import fonts from "../../assects/fonts";
 import NewsListCardComponent from "../../component/NewsListCardComponent";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import routes from "../../routes/routes";
 import { getTopHeadlines } from "../../api";
 import { ItemSeparatorComponent, LoaderComponet } from "../../component";
@@ -21,11 +21,12 @@ function NationalNews(){
     const navigation = useNavigation();
     const [articles,setArticles] = useState([]);
     const [loading,setLoading] = useState(false);
+    const isFocused = useIsFocused();
 
 
 
     useEffect(()=>{
-        // fetchNationalNews({setLoading,setArticles})
+        fetchNationalNews({setLoading,setArticles})
    },[])
 
 

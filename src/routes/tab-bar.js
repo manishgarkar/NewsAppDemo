@@ -17,7 +17,6 @@ const CustomTabBar = ({ state, descriptors, navigation, isGuest,visibleText }) =
 
   const tabBarVisible = activeStackState?.routes[activeStackState.index]?.name == undefined ? routesToExcluedNavBar.includes(state.routes[state.index].name) : routesToExcluedNavBar.includes(activeStackState?.routes[activeStackState.index]?.name);
 
-console.log("state.routes[state.index].name",state.routes[state.index].name)
 
     const Logout = async() => {
         

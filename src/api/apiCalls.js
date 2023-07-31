@@ -15,7 +15,6 @@ export function fetchBreakingNews({setLoading,setArticles}){
 
 
 export function fetchNationalNews({setLoading,setArticles}){
-    setLoading(true)
     const data ={
         category:"nation" ,
         lang:"hi",
@@ -29,7 +28,6 @@ export function fetchNationalNews({setLoading,setArticles}){
 
 
 export function fetchInternationalNews({setLoading,setArticles}){
-    setLoading(true)
     const data ={
         category:"world" ,
         lang:"hi",
@@ -43,7 +41,6 @@ export function fetchInternationalNews({setLoading,setArticles}){
 
 
 export function fetchSportsNews({setLoading,setArticles}){
-    setLoading(true)
     const data ={
         category:"sports" ,
         lang:"hi",
@@ -52,12 +49,12 @@ export function fetchSportsNews({setLoading,setArticles}){
     getTopHeadlines(data).then((res)=>{
         setLoading(false)
         setArticles(res?.data?.articles)
+        console.log("fetchSportsNews",res?.data?.articles)
     }).catch(()=>setLoading(false))
 }
 
 
 export function fetchTechnologyNews({setLoading,setArticles}){
-    setLoading(true)
     const data ={
         category:"technology" ,
         lang:"hi",
